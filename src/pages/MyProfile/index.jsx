@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 import jwt_decode from "jwt-decode";
 import { useHistory } from "react-router-dom";
 
-const MyProfile = () => {
+const Profile = () => {
   const history = useHistory();
   const [user, setUser] = useState(0);
 
@@ -14,7 +14,7 @@ const MyProfile = () => {
       fetch('http://localhost:1337/users/me', {
         method: 'get',
         headers: {
-          'Authorization': `Bearer ${Cookies.get('token')}`,
+          'Authorization': `Bearer ${Cookies.get('jwt')}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify()
@@ -28,6 +28,7 @@ const MyProfile = () => {
     }; 
     fetchUserProfile()
   }, []);
+
   const handleRoute = () =>{ 
     history.push("/login");
   }
@@ -44,13 +45,13 @@ const MyProfile = () => {
 
  return (
    <>
-    <h1>Bonjour voici la page de votre profile</h1>
+    <h1>Bonjour</h1>
     <h2>Username : {user.username}</h2>
     <h2>Email : {user.email}</h2>
-    <h2>Date de création : {user.created_at}</h2>
+    <h2>Email : {user.created_at}</h2>
   </>
  );
   };
 };
 
-export default MyProfile;
+export default Profile;
