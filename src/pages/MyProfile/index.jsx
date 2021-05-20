@@ -1,53 +1,57 @@
-import React, { useState } from 'react';
-import Cookies from 'js-cookie'
+import React, { useState, useEffect } from 'react';
+import Cookies from 'js-cookie';
+import jwt_decode from "jwt-decode";
+import { useHistory } from "react-router-dom";
 
-function MyProfile  () {
-  const token = Cookies.get('jwt');
-const API_URL = "http://localhost:1337/users/me"
-const [profile, setWorkProfile] = React.useState({content: []});
-const legnthliste = profile.content;
+const MyProfile = () => {
+  const history = useHistory();
+  const [user, setUser] = useState(0);
 
-      fetch(API_URL, {
+  
+  useEffect (() => {
+    const fetchUserProfile = async () => {
+      
+      fetch('http://localhost:1337/users/me', {
         method: 'get',
         headers: {
-          'Authorization': `Bearer ${token}`, 
+          'Authorization': `Bearer ${Cookies.get('token')}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify()
-      })
-    .then((response) => response.json()) 
-    .then(function(response) {
-  
-
-          const responseusername = response.username;
-
-          if (legnthliste !== responseusername) {
-            if (response.error !== 404){
-              console.log(response)
-          setWorkProfile({content: (response.username)});
-
-          };
-
-      };
+      }).then((response) => response.json())
+      .then((response) => {
+         setUser(response);
+         console.log(response.error)
+      }).catch(function() {
+        console.log("error");
     });
+    }; 
+    fetchUserProfile()
+  }, []);
+
+  const handleRoute = () =>{ 
+    history.push("/login");
+  }
 
 
-
-
-
-
-
-
+  if(user.error === 'Unauthorized'){
     return (
-<div>
-{profile.content}
-</div>
+      <>
+        <h1>TU N'AS PAS LE DROIT</h1>
+        <button onClick={handleRoute}>Log toi petit</button>
+      </>
     );
-    
-}
+  }else {
+
+ return (
+   <>
+    <h1>Bonjour voici la page de votre profile</h1>
+    <h2>Username : {user.username}</h2>
+    <h2>Email : {user.email}</h2>
+    <h2>Date de création : {user.created_at}</h2>
+  </>
+ );
+  };
+};
+
 export default MyProfile;
-
-
-
- 
-  

@@ -59,7 +59,7 @@ function SignUp  () {
 		</p>
 
   <Field name="email" value={email} onChange={onChangeEmail} placeholder="Enter your Email"></Field>
-  <Field name="password" value={password} onChange={onChangePassword} placeholder="Insert Password"></Field>
+  <Field type="password" name="password" value={password} onChange={onChangePassword} placeholder="Insert Password"></Field>
    
    
    <input className="submitbt" type = "submit" onClick={onSend} value = "Submit"></input>
