@@ -1,0 +1,21 @@
+body {
+    background-color: #fff1e2;
+}
+
+.navbar {
+    background-color: #2b2621;
+    
+}
+
+.nav-link {
+    color:  #FFE2C7;
+}
+
+.entire-page {
+    min-height: 100vh;
+}
+
+.btdec {
+    background-color: #2b2621;
+    border-style: none;
+}

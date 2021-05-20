@@ -1,0 +1,95 @@
+@import 'https://fonts.googleapis.com/css?family=Dosis|Roboto:300,400';
+* {
+	margin: 0;
+	padding: 0;
+}
+
+
+
+.formcontainer{
+	position:absolute;
+	width: auto;
+	height:auto;
+	top: calc(50% - 240px);
+	left: calc(50% - 155px);
+
+}
+
+.signform {
+	position: absolute;
+	text-align: center;
+	background: #fff;
+	width: 310px;
+	height: 470px;
+	border-radius: 5px;
+	padding: 30px 20px 0 20px;
+	box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.25);
+	box-sizing: border-box;
+}
+
+.formcontent{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 100;
+	text-transform: uppercase;
+	font-size: 12px;
+	color: #87613d;
+	margin-bottom: 40px;
+}
+
+.formcontent > span {
+	padding-top: 3px;
+	display: block;
+	font-weight: 400;
+	font-size: 9px;
+}
+
+.titleform {
+	font-family: 'Dosis';
+	font-size: 35px;
+	text-transform: uppercase;
+	color: #87613d;
+	margin-bottom: 30px;
+}
+
+input{
+	outline: none !important; 
+}
+
+
+input {
+	border: none;
+	border-bottom: 1px solid #ffc185;
+	width: 85%;
+	font-family: 'Roboto';
+	color: #ff7d00;
+	text-align: center;
+	font-size: 21px;
+	font-weight:100;
+	margin-bottom:25px;
+}
+
+::-webkit-input-placeholder {
+   color: #ffc185;
+	font-family: 'Roboto';
+	font-weight:100;
+}
+
+.submitbt {
+	background-color: orange;
+	border-radius: 20px;
+	border: none;
+	text-decoration: none;
+	color: white;
+	padding: 7px 7px;
+	margin: 20px 20px;
+	cursor: pointer;
+ }
+
+ .right {
+	 margin-left: 75%;
+ }
+
+
+
+
+
