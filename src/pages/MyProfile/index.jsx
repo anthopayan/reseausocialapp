@@ -28,7 +28,6 @@ const MyProfile = () => {
     }; 
     fetchUserProfile()
   }, []);
-
   const handleRoute = () =>{ 
     history.push("/login");
   }
