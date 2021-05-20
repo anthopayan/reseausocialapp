@@ -10,6 +10,7 @@ export const Navbar = () => {
   const onExit = () => {
     Cookies.remove('jwt');
     Cookies.remove('username');
+    Cookies.remove('showuser');
     window.location.reload(false);
   };
 
@@ -21,10 +22,13 @@ return (
     <div className="collapse navbar-collapse" id="navbarNavDropdown">
       <ul className="navbar-nav">
         <li className="nav-item">
-        <Link className="nav-link active" aria-current="page"  to="/MyProfile">Mon profile</Link>
+        <Link className="nav-link active" aria-current="page"  to="/MyProfile">Mon profil</Link>
         </li>
         <li className="nav-item">
         <Link className="nav-link active" aria-current="page"  to="/">Les Posts</Link>
+        </li>
+        <li className="nav-item">
+        <Link className="nav-link active" aria-current="page"  to="/users">Les Profils utilisateurs</Link>
         </li>
         <li className="nav-item">
         <button className="nav-link active btdec" onClick={onExit}>Se déconnecter</button>
