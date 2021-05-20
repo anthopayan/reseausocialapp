@@ -8,6 +8,8 @@ import LogIn from './components/LogIn';
 import MyProfile from './pages/MyProfile/index';
 import  Cookies from 'js-cookie';
 import Posts from './pages/Posts/index';
+import Profiles from './pages/Profiles/index';
+
 
 
 
@@ -27,8 +29,11 @@ const App = () => {
         <Route path="/MyProfile">
         <MyProfile />
         </Route>
-        <Route path="/">
+        <Route path="/" exact>
         <Posts />
+        </Route>
+        <Route path="/users">
+        <Profiles />
         </Route>
       </Switch>
     </main>
