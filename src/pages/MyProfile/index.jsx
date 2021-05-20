@@ -1,53 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie'
-
-function MyProfile  () {
-  const token = Cookies.get('jwt');
-const API_URL = "http://localhost:1337/users/me"
-const [profile, setWorkProfile] = React.useState({content: []});
-const legnthliste = profile.content;
-
-      fetch(API_URL, {
-        method: 'get',
-        headers: {
-          'Authorization': `Bearer ${token}`, 
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify()
-      })
-    .then((response) => response.json()) 
-    .then(function(response) {
-  
-
-          const responseusername = response.username;
-
-          if (legnthliste !== responseusername) {
-            if (response.error !== 404){
-              console.log(response)
-          setWorkProfile({content: (response.username)});
-
-          };
-
-      };
-    });
+import { useHistory } from "react-router-dom";
 
 
+const MyProfile = () => {
 
+  const history = useHistory();
+  const handleRoute = () =>{ 
+    history.push("/login");
+  }
 
+  const [user, setUser] = useState(0);
+  useEffect (() => {
+    fetch('http://localhost:1337/users/me', {
+    method: 'get',
+    headers: {
+      'Authorization': `Bearer ${Cookies.get('jwt')}`, 
+      'Content-Type': 'application/json'
+    }})
+    .then((response) => response.json())
+    .then((response) => setUser(response))
+    .catch((error) => {
+      console.log('error')})
+  }, [])  
 
-
-
-
+  if (Cookies.get('tokenLogin')) {
     return (
-<div>
-{profile.content}
-</div>
-    );
-    
-}
+      <>
+      <h1>Profile</h1>
+      <p>UserName : {user.username}</p>
+      <p>Email : {user.email}</p>
+      <p>Description : {user.description}</p>
+      </>
+    )}
+  else {
+    return (
+      <>
+      <h1>Profile</h1>
+      <p>Connectez-vous chenapan !</p>
+      <button
+            onClick={handleRoute}>
+              Connectez-vous !
+          </button>      </>
+    )}
+  }
+
 export default MyProfile;
-
-
-
- 
-  
